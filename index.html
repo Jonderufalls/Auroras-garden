@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora's Garden</title>
+    <link rel="icon" href="PicsVids/aurora-logo.jpg" type="image/icon type">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #00495c;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center; /* Horizontally centers */
+            align-items: center; /* Vertically centers */
+        }
+        .navbar img {
+            width: 80px;
+            border-radius: 50%;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 30px;
+                background-color: #00576d;
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #affdf9; /* Creamy coffee */
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .hero img {
+            max-width: 100px;
+            margin-top: 20px;
+            border-radius: 50%;
+        }
+        /* Section Titles */
+        .section {
+            padding: 50px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .section img{
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.9);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .section hr {
+            width: 50px;
+            border: 3px solid #affdf9;
+            margin: 0 auto 20px;
+            border-radius: 3px;
+        }
+        /* Best Sellers */
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .book-btn a button {
+            width: 150px;
+            height: 50px;
+            border-radius: 30px;
+            background-color: aqua;
+            color: #000000;
+            border: none;
+            outline: none;
+        }
+        .product-card {
+            background-color: rgb(165, 255, 177);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card p {
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        /* Promotional Poster */
+        .promo img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 400x){
+            .video-container video {
+                width: 80%;
+            }
+        }
+
+        
+
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #4a2c2a;
+            text-decoration: none;
+        }
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00b652;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .floating-btn:hover {
+            background-color: #affdf9;
+        }
+        #footer {
+            background-color: #00495c; /* Coffee brown */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative; 
+            padding-bottom: 30%; /* Aspect ratio 16:9 (adjust for your video) */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        @media (min-width: 769px){
+            .video-container {
+                width: 70%; /* Make the container 50% of its parent width */
+            }
+        }
+
+        @media (min-width: 969px){
+            .video-container {
+                width: 50%; /* Make the container 50% of its parent width */
+            }
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo"><img src="PicsVids/aurora-logo.jpg" alt="Aurora's Garden logo"> <span>Aurora's Garden</span></div>
+    <!-- <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </div> -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Aurora's Garden</h1>
+    <img src="PicsVids/aurora-logo.jpg" alt="Coffee Cup">
+    <p>"Escape to <b>Aurora's Garden</b>, your slice of paradise in San Pedro, Tunga, Leyte!
+        Nestled amidst lush greenery and blooming flowers, our resort is where relaxation
+        meets nature's beauty. Whether you’re seeking a serene getaway or a fun-filled 
+        adventure, Aurora's Garden is the perfect retreat to refresh your soul and create
+        unforgettable memories. Come and experience the charm—we’re ready to welcome you"</p>
+</div>
+
+<!-- Promotional Poster Section -->
+<div class="section promo">
+    <h2>Special Offers</h2>
+    <hr>
+    <a href="PicsVids/infographic.jpg">
+        <img src="PicsVids/infographic.jpg" alt="Promotional Poster">
+    </a>
+    <p>Click on the poster to explore our latest deals and discounts!</p>
+    <button id="backButton" onclick="goBack()">Back</button>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+
+
+
+<!-- Best Sellers Section -->
+<div class="section">
+    <h2>ACCOMMODATIONS</h2>
+    <hr>
+    <div class="products">
+        <div class="product-card">
+            <a href="PicsVids/billiard-area.jpg">
+                <img src="PicsVids/billiard-area.jpg" alt="Classic Latte" style="width: 100%; height: auto;">
+            </a>
+            <p style="text-decoration: none; color: #333;">Billiard Area</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/casa-gracia-room.jpg">
+                <img src="PicsVids/casa-gracia-room.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>Casa Gracia Room</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/cottages.jpg">
+                <img src="PicsVids/cottages.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>Cottages</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/aurora-room.jpg">
+                <img src="PicsVids/aurora-room.jpg" alt="Classic Latte" style="width: 100%; height: auto;">
+            </a>
+            <p style="text-decoration: none; color: #333;">Aurora Room</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/swimming-pool.jpg">
+                <img src="PicsVids/swimming-pool.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>Swimming Pool</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/the-bridge-of-dreams.jpg">
+                <img src="PicsVids/the-bridge-of-dreams.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>The Bridge of Dreams</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/pathway-to-swimming-pool.jpg">
+                <img src="PicsVids/pathway-to-swimming-pool.jpg" alt="Classic Latte" style="width: 100%; height: auto;">
+            </a>
+            <p style="text-decoration: none; color: #333;">Pathway to Swimming Pool</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/new-swimmingpool.jpg">
+                <img src="PicsVids/new-swimmingpool.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>New Swimming Pool</p>
+        </div>
+        <div class="product-card">
+            <a href="PicsVids/new-cottages.jpg">
+                <img src="PicsVids/new-cottages.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            </a>
+            <p>New Cottages</p>
+        </div>
+    </div><br>
+    <div class="book-btn">
+        <a href="https://web.facebook.com/aurorasgardenfarmresort"><button>Book Now</button></a>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<div id="footer">
+    <p>© 2024 Aurora's Garden | All Rights Reserved</p>
+</div>
+
+<!-- Floating Button
+<button class="floating-btn" onclick="window.location.href='menu.html'">
+    <i class="fas fa-book"></i>
+</button> -->
+
+<script>
+    // Toggle navigation menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
